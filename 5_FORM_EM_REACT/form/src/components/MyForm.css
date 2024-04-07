@@ -1,0 +1,32 @@
+form{
+    width: 500px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+input, textarea, select{
+        
+    border-radius: 7px;
+    padding: 8px 0px;
+    width: 300px;
+    display: block;
+    margin-top: 10px;
+}
+
+textarea{
+    padding: 65px 0px;
+    
+}
+.btn-enviar{
+    background-color: black;
+    color: white;
+    width: 70px;
+}
+h2{
+    text-align: center;
+}
+
+.btn-enviar:hover{
+    background-color: rgb(104, 108, 108);
+}
+
