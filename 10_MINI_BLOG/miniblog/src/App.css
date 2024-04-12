@@ -2,3 +2,9 @@
   min-height: 60vh;
   margin-bottom: 5em;
 }
+
+.print_loading{
+  text-align: center;
+  margin: 500px;
+  font-size: 30px;
+}

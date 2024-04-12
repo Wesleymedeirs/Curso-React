@@ -18,10 +18,12 @@ const Register = () => {
   //Para enviar os dados do formulário
    const handleSubmit = async (e) => {
     e.preventDefault()
-
-    //Ao enviar o formulário zerar o erro
+    
+    //Ao enviar o formulário zerar o erro    
+    
     setError('')
-
+    
+    
     const user = {
       displayName,
       email,
@@ -41,6 +43,8 @@ const Register = () => {
     if(authError){
       setError(authError)
     }
+
+    
 
    }, [authError]) 
 
