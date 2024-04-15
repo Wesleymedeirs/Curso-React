@@ -58,8 +58,8 @@ export const useAuthentication = () => {
       return user
 
     } catch (error) {
-      console.log(error.message)
-      console.log(typeof error.message)
+      //console.log(error.message)
+      //console.log(typeof error.message)
       //Com let pois o valor da systemErrorMessage pode vairar durante a execução
       let systemErrorMessage
 
@@ -82,37 +82,38 @@ export const useAuthentication = () => {
 
   //LOGIN - ENTRAR
   const login = async (data) => {
-
     checkIfIsCancelled()
-
+    //iniciando o carrregamento
     setLoading(true)
     setError(false)
 
     try {
       await signInWithEmailAndPassword(auth, data.email, data.password);
+      setLoading(false)
     } catch (error) {
-      console.log(error.message);
-      console.log(typeof error.message);
-      console.log(error.message.includes("user-not"));
+      
+      console.log(error.message) 
 
-      let systemErrorMessage;
-
-      if (error.message.includes("user-not-found")) {
+      /*if (error.message.includes("user-not-found")) {
         systemErrorMessage = "Usuário não encontrado.";
       } else if (error.message.includes("wrong-password")) {
         systemErrorMessage = "Senha incorreta.";
       } else {
         systemErrorMessage = "Ocorreu um erro, por favor tenta mais tarde.";
-      }
+      } */
 
-      console.log(systemErrorMessage);
-
+      //RESOLVER DEPOIS O FEEDBACK DE LOGIN
+      let systemErrorMessage;
+      if (error.message.includes("invalid-credential")) {
+        systemErrorMessage = "Usuário não encontrado.";
+      } else {
+        systemErrorMessage = "Ocorreu um erro, por favor tenta mais tarde.";
+      } 
       setError(systemErrorMessage);
-    }
-    setLoading(true)
-
+      //console.log(error.message);
+      setLoading(false)
+    }  
   }
-
 
   //Função para adicionar a variavel Cancelled true e limpar funções já executadas
   useEffect(() => {
