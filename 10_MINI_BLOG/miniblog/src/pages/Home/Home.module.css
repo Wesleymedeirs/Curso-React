@@ -3,7 +3,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 200px;
 }
 
 .search_form {
@@ -15,14 +14,8 @@
 }
 
 .search_form input {
-  margin-right: 100px;
-  width: 100%;
-}
-
-.search_form label {
- text-align: center;
- font-size: 2em;
- font: bold;
+  margin-right: 10px;
+  width: 50%;
 }
 
 .noposts {

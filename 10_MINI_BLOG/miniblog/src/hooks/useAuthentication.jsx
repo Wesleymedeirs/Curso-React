@@ -90,19 +90,8 @@ export const useAuthentication = () => {
     try {
       await signInWithEmailAndPassword(auth, data.email, data.password);
       setLoading(false)
-    } catch (error) {
+    } catch (error) { 
       
-      console.log(error.message) 
-
-      /*if (error.message.includes("user-not-found")) {
-        systemErrorMessage = "Usuário não encontrado.";
-      } else if (error.message.includes("wrong-password")) {
-        systemErrorMessage = "Senha incorreta.";
-      } else {
-        systemErrorMessage = "Ocorreu um erro, por favor tenta mais tarde.";
-      } */
-
-      //RESOLVER DEPOIS O FEEDBACK DE LOGIN
       let systemErrorMessage;
       if (error.message.includes("invalid-credential")) {
         systemErrorMessage = "Usuário não encontrado.";
@@ -110,7 +99,7 @@ export const useAuthentication = () => {
         systemErrorMessage = "Ocorreu um erro, por favor tenta mais tarde.";
       } 
       setError(systemErrorMessage);
-      //console.log(error.message);
+      console.log(error.message);
       setLoading(false)
     }  
   }
