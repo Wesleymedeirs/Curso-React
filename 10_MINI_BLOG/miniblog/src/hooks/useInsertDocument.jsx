@@ -23,7 +23,7 @@ const insertReducer = (state, action) => {
 export const useInsertDocument = (docCollection) => {
   const [response, dispatch] = useReducer(insertReducer, initialState);
 
-  // deal with memory leak
+  // Lidar com o vazamento de memoria
   const [cancelled, setCancelled] = useState(false);
 
   const checkCancelBeforeDispatch = (action) => {
@@ -58,3 +58,4 @@ export const useInsertDocument = (docCollection) => {
 
   return { insertDocument, response };
 };
+

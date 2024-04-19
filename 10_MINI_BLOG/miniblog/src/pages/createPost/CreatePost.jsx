@@ -24,13 +24,6 @@ const CreatePost = () => {
     e.preventDefault();
     setFormError("");
 
-    // validate image
-    try {
-      new URL(image);
-    } catch (error) {
-      setFormError("A imagem precisa ser uma URL.");
-    }
-
     //Verificando o preenchimento dos campos
     if (title === "") {
       setFormError('Preencha o campo titulo');
@@ -38,14 +31,22 @@ const CreatePost = () => {
       setFormError('Preencha o campo da url');
     } else if (body === "") {
       setFormError('Preencha o campo descrição');
-     }else if(tags.length === 0) {
+    } else if (tags.length === 0) {
       setFormError('Preencha o campo de tags');
-    }
+    }    
 
     // Criar um array com as tags informadas
-    const tagsArray = tags.split(",").map((tag) => tag.trim().toLowerCase());
+    const tagsArray = tags.split(",").map((tag) => tag.trim().toLowerCase());// validate image
+
+    try {
+        const url = new URL(image);
+    } catch (error) {
+        setFormError("A imagem precisa ser uma URL válida.");
+        return; // Bloquear o envio do formulário
+    }
 
     if (formError) return
+    
 
     insertDocument({
       title,
@@ -60,71 +61,71 @@ const CreatePost = () => {
     navigate("/");
   };
 
-  
 
 
-return (
-  <div className={styles.create_post}>
-    <h2>Criar post</h2>
-    <p>Escreva sobre o que quiser e compartilhe o seu conhecimento!</p>
-    <form onSubmit={handleSubmit}>
-      <label>
-        <span>Título:</span>
-        <input
-          type="text"
-          name="text"
 
-          placeholder="Pense num bom título..."
-          onChange={(e) => setTitle(e.target.value)}
-          value={title}
-        />
-      </label>
-      <label>
-        <span>URL da imagem:</span>
-        <input
-          type="text"
-          name="image"
+  return (
+    <div className={styles.create_post}>
+      <h2>Criar post</h2>
+      <p>Escreva sobre o que quiser e compartilhe o seu conhecimento!</p>
+      <form onSubmit={handleSubmit}>
+        <label>
+          <span>Título:</span>
+          <input
+            type="text"
+            name="text"
 
-          placeholder="Insira uma imagem que representa seu post"
-          onChange={(e) => setImage(e.target.value)}
-          value={image}
-        />
-      </label>
-      <label>
-        <span>Conteúdo:</span>
-        <textarea
-          name="body"
+            placeholder="Pense num bom título..."
+            onChange={(e) => setTitle(e.target.value)}
+            value={title}
+          />
+        </label>
+        <label>
+          <span>URL da imagem:</span>
+          <input
+            type="text"
+            name="image"
 
-          placeholder="Insira o conteúdo do post"
-          onChange={(e) => setBody(e.target.value)}
-          value={body}
-        ></textarea>
-      </label>
-      <label>
-        <span>Tags:</span>
-        <input
-          type="text"
-          name="tags"
+            placeholder="Insira uma imagem que representa seu post"
+            onChange={(e) => setImage(e.target.value)}
+            value={image}
+          />
+        </label>
+        <label>
+          <span>Conteúdo:</span>
+          <textarea
+            name="body"
 
-          placeholder="Insira as tags separadas por vírgula"
-          onChange={(e) => setTags(e.target.value)}
-          value={tags}
-        />
-      </label>
+            placeholder="Insira o conteúdo do post"
+            onChange={(e) => setBody(e.target.value)}
+            value={body}
+          ></textarea>
+        </label>
+        <label>
+          <span>Tags:</span>
+          <input
+            type="text"
+            name="tags"
 
-      {!response.loading && <button  className="btn">Criar post</button>}
-      {response.loading && (
-        <button className="btn" disabled>
-          Aguarde.. .
-        </button>
-      )}
-      {(response.error || formError) && (
-        <p className="error">{response.error || formError}</p>
-      )}
+            placeholder="Insira as tags separadas por vírgula"
+            onChange={(e) => setTags(e.target.value)}
+            value={tags}
+          />
+        </label>
 
-    </form>
-  </div>
-);
+        {!response.loading && <button className="btn">Criar post</button>}
+        {response.loading && (
+          <button className="btn" disabled>
+            Aguarde.. .
+          </button>
+        )}
+        {(response.error || formError) && (
+          <p className="error">{response.error || formError}</p>
+        )}
+
+      </form>
+    </div>
+  );
 };
 
 export default CreatePost;

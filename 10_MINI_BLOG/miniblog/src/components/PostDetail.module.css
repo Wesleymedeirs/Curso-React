@@ -18,16 +18,17 @@
   }
   
   .tags p {
-    margin-right: 3px;
+    margin: 0px 3px 0px 0px;
+    font-style: italic;
   }
   
   .tags span {
     font-weight: bold;
   }
   
-  .createdby {
+  .createdBy {
     font-style: italic;
     color: #444444;
     font-size: 0.8em;
-    margin-bottom: 1em;
+    padding-bottom: 1px;
   }

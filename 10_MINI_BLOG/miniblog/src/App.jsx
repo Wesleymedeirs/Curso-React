@@ -22,6 +22,7 @@ import Login from './pages/Login/Login'
 import CreatePost from './pages/createPost/CreatePost'
 import Dashboard from './pages/dashboard/Dashboard'
 import Search from './pages/Search/Search'
+import Post from './pages/Post/Post'
 
 
 
@@ -58,6 +59,7 @@ function App() {
               <Route path='/' element={<Home />} />
               <Route path='/about' element={<About />} />
               <Route path='/search' element={<Search />} />
+              <Route path='/posts/:id' element={<Post />} />
                {/*caso o usuário não esteja logado, a pagina login é bloqueada e retona a home */}
               <Route path='/register' 
               element={!user ? <Register /> : <Navigate to='/'/>} />

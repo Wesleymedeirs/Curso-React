@@ -7,15 +7,19 @@
   }
   
   .search_container h1 {
-    margin-bottom: 1em;
+    margin-bottom: 2px;
   }
   
   .search_container p {
-    margin-bottom: 30px;
+    margin-bottom: 25px;
+    
   }
 
   .noposts{
     text-align: center;
   }
 
+  .p_sub_titulo{
+    color: #aaa;
+  }
  
