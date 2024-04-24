@@ -8,8 +8,10 @@ import { useAuthentication } from './hooks/useAuthentication'
 //Components
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+
 //Context
 import { AuthProvider } from './context/AuthContext'
+
 //Pages
 import About from './pages/About/About'
 import Home from './pages/Home/Home'
