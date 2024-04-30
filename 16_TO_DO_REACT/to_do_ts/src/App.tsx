@@ -1,7 +1,7 @@
 //CSS
 import styles from './App.module.css'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 //interfaces
 import { ITask } from './interfaces/Taks'
@@ -14,9 +14,24 @@ import TaskList from './components/TaskList'
 import Modal from './components/Modal'
 
 function App() {
-  const [taskList, setTaskList] = useState<ITask[]>([])
+
+  const [taskList, setTaskList] = useState<ITask[]>(()=> {
+    const savedTasks = localStorage.getItem('tasks');
+    if (savedTasks) {
+      return JSON.parse(savedTasks);
+    }else{
+      return []
+    }
+  })
   //state para guardar valor da edição
   const [taskToUpdate, setTaskToUpdate] = useState<ITask | null>(null)
+  
+  useEffect(() => {
+    // Salvar dados no localStorage sempre que a lista de tarefas for atualizada
+    localStorage.setItem('tasks', JSON.stringify(taskList));
+  }, [taskList]);
+
+  console.log(taskList)
 
   const deleteTask = (id: number) => {
     setTaskList(

@@ -1,16 +1,14 @@
 .header {
     background-color: #6b8ac9;
     color: #000000;
-    padding: 10px;
-     
-   
+    padding: 10px;  
    
 }
 
 .header img {
     top: 7px;
     left: 7px;
-    position: fixed;
+    position: absolute;
     width: 60px;   
 }
 
