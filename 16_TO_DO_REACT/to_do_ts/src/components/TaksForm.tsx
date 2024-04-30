@@ -23,6 +23,7 @@ const TaksForm = ({ btnText, taksList, setTaskList, task, hundleUpdate }: Props)
     const [title, setTitle] = useState<string>('')
     const [difficulty, setDifficulty] = useState<number>(0)
 
+        //Adicicionar a task apenas uma vez
     useEffect(() => {
         if (task) {
             setId(task.id)
@@ -47,9 +48,6 @@ const TaksForm = ({ btnText, taksList, setTaskList, task, hundleUpdate }: Props)
             setTitle('')
             setDifficulty(0)
         }
-
-
-
     }
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
